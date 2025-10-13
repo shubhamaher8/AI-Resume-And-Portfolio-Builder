@@ -183,7 +183,7 @@ def main():
     # Sidebar
     with st.sidebar:
         st.title("ℹ️ About")
-        st.info("AI-powered tool to generate professional resumes, cover letters, and portfolio summaries using Cerebras AI.")
+        st.info("AI-powered tool to generate professional resumes, cover letters, and portfolio summaries using AI Assistant.")
         st.markdown("---")
         st.markdown("### How to use:")
         st.markdown("1. Fill in your details")
@@ -337,7 +337,7 @@ def main():
     # Footer
     st.markdown("---")
     st.markdown(
-        "<div style='text-align: center; color: gray;'>Built with ❤️ using Streamlit & Cerebras AI</div>",
+        "<div style='text-align: center; color: gray;'>Built with ❤️ using Streamlit</div>",
         unsafe_allow_html=True
     )
 
