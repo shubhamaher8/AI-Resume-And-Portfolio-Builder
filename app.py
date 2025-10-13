@@ -198,32 +198,25 @@ def main():
     # Input Form
     st.header("📋 Your Information")
     
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        name = st.text_input("Full Name *", placeholder="John Doe")
-        email = st.text_input("Email *", placeholder="john.doe@example.com")
-        phone = st.text_input("Contact Number *", placeholder="+1 234 567 8900")
-        objective = st.text_area("Career Objective (optional)", 
-                                 placeholder="Brief description of your career goals...",
-                                 height=100)
-    
-    with col2:
-        education = st.text_area("Education Details *", 
-                                placeholder="e.g., B.Sc. Computer Science, XYZ University (2020-2024)",
-                                height=100)
-        skills = st.text_area("Skills (comma-separated) *", 
-                             placeholder="Python, JavaScript, Machine Learning, etc.",
+    # Stack all input fields vertically
+    name = st.text_input("Full Name *", placeholder="John Doe")
+    email = st.text_input("Email *", placeholder="john.doe@example.com")
+    phone = st.text_input("Contact Number *", placeholder="+1 234 567 8900")
+    objective = st.text_area("Career Objective (optional)", 
+                             placeholder="Brief description of your career goals...",
                              height=100)
-    
+    education = st.text_area("Education Details *", 
+                            placeholder="e.g., B.Sc. Computer Science, XYZ University (2020-2024)",
+                            height=100)
+    skills = st.text_area("Skills (comma-separated) *", 
+                         placeholder="Python, JavaScript, Machine Learning, etc.",
+                         height=100)
     experience = st.text_area("Work Experience / Internships *", 
                              placeholder="Describe your work experience, internships, or relevant roles...",
                              height=120)
-    
     projects = st.text_area("Projects (optional)", 
                            placeholder="Describe your key projects with brief descriptions...",
                            height=120)
-    
     st.markdown("---")
     
     # Prepare user data
@@ -309,29 +302,31 @@ def main():
         # Download as PDF button
         col1, col2, col3 = st.columns([1, 1, 2])
         with col1:
-            if st.button("📥 Download as PDF", use_container_width=True):
-                with st.spinner("Generating PDF..."):
-                    pdf_path = generate_pdf(
-                        st.session_state.generated_content, 
-                        f"{st.session_state.content_type.lower().replace(' ', '_')}.pdf"
-                    )
-                    
-                    if pdf_path:
-                        with open(pdf_path, 'rb') as pdf_file:
-                            pdf_bytes = pdf_file.read()
-                            st.download_button(
-                                label="💾 Click to Download",
-                                data=pdf_bytes,
-                                file_name=f"{name.replace(' ', '_')}_{st.session_state.content_type.replace(' ', '_')}.pdf",
-                                mime="application/pdf",
-                                use_container_width=True
-                            )
-                        
-                        # Clean up temp file
-                        try:
-                            os.unlink(pdf_path)
-                        except:
-                            pass
+            # Use st.download_button directly, no extra button appears
+            pdf_bytes = None
+            if st.session_state.generated_content:
+                # Generate PDF bytes in memory
+                pdf_path = generate_pdf(
+                    st.session_state.generated_content, 
+                    f"{st.session_state.content_type.lower().replace(' ', '_')}.pdf"
+                )
+                if pdf_path:
+                    with open(pdf_path, 'rb') as pdf_file:
+                        pdf_bytes = pdf_file.read()
+                # Clean up temp file
+                try:
+                    os.unlink(pdf_path)
+                except:
+                    pass
+
+            if pdf_bytes:
+                st.download_button(
+                    label="📥 Download as PDF",
+                    data=pdf_bytes,
+                    file_name=f"{name.replace(' ', '_')}_{st.session_state.content_type.replace(' ', '_')}.pdf",
+                    mime="application/pdf",
+                    use_container_width=True
+                )
         
         with col2:
             if st.button("🔄 Clear Output", use_container_width=True):
