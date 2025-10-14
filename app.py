@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from fpdf import FPDF
 import tempfile
+import re
 
 # Configure page
 st.set_page_config(
@@ -133,6 +134,17 @@ Write a concise portfolio summary that showcases their technical skills, key pro
     return prompt
 
 
+def strip_markdown(md_text):
+    # Remove basic markdown formatting for plain text output
+    text = re.sub(r'\*\*(.*?)\*\*', r'\1', md_text)  # bold
+    text = re.sub(r'\*(.*?)\*', r'\1', text)         # italic
+    text = re.sub(r'`(.*?)`', r'\1', text)           # inline code
+    text = re.sub(r'^#+\s?', '', text, flags=re.MULTILINE)  # headers
+    text = re.sub(r'^-\s?', '', text, flags=re.MULTILINE)   # lists
+    text = re.sub(r'\[(.*?)\]\(.*?\)', r'\1', text)         # links
+    return text
+
+
 def generate_pdf(content, filename):
     """
     Generate a PDF from text content
@@ -149,8 +161,9 @@ def generate_pdf(content, filename):
         pdf.add_page()
         pdf.set_font("Arial", size=11)
         
-        # Add content with proper text wrapping
-        for line in content.split('\n'):
+        # Strip markdown before writing
+        plain_content = strip_markdown(content)
+        for line in plain_content.split('\n'):
             if line.strip():
                 # Handle special characters
                 line = line.encode('latin-1', 'replace').decode('latin-1')
