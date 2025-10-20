@@ -12,7 +12,7 @@
 
 ---
 
-A powerful Streamlit web application that leverages AI to generate professional resumes, cover letters, and portfolio summaries using the Meta Llama Maverick Model. Deployed on Streamlit and made for professionals to create high rate and effective employment solutions.
+A powerful Streamlit web application that leverages AI to generate professional resumes, cover letters, and portfolio summaries using the Meta Llama Model. Deployed on Streamlit and made for professionals to create high rate and effective employment solutions.
 
 ## 🚀 Deployment
 
@@ -81,7 +81,7 @@ AI-Resume-And-Portfolio-Builder/
 
 ## 🎯 Features
 
-- **AI-Powered Generation**: Uses AI (`llama-4-maverick-17b-128e-instruct`) to create professional documents.
+- **AI-Powered Generation**: Uses AI (`llama-3.3-70b`) to create professional documents.
 - **Three Document Types**:
   - Professional Resume
   - Compelling Cover Letter
@@ -118,7 +118,7 @@ AI-Resume-And-Portfolio-Builder/
 ### API Configuration
 
 The application uses the following Cerebras API settings:
-- **Model**: `llama-4-maverick-17b-128e-instruct`
+- **Model**: `llama-3.3-70b`
 - **Endpoint**: `https://api.cerebras.ai/v1/chat/completions`
 - **Temperature**: 0.7
 - **Max Tokens**: 2000
