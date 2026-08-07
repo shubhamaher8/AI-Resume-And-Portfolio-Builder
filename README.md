@@ -81,7 +81,7 @@ AI-Resume-And-Portfolio-Builder/
 
 ## 🎯 Features
 
-- **AI-Powered Generation**: Uses AI (`llama-3.3-70b`) to create professional documents.
+- **AI-Powered Generation**: Uses AI (`"gpt-oss-120b`) to create professional documents.
 - **Three Document Types**:
   - Professional Resume
   - Compelling Cover Letter
@@ -111,14 +111,14 @@ AI-Resume-And-Portfolio-Builder/
 
 - **Frontend**: Streamlit
 - **Backend**: Python
-- **AI API**: Cerebras API (llama-4-maverick-17b-128e-instruct)
+- **AI API**: Cerebras API (gpt-oss-120b)
 - **PDF Generation**: FPDF
 - **Environment Management**: python-dotenv
 
 ### API Configuration
 
 The application uses the following Cerebras API settings:
-- **Model**: `llama-3.3-70b`
+- **Model**: `"gpt-oss-120b`
 - **Endpoint**: `https://api.cerebras.ai/v1/chat/completions`
 - **Temperature**: 0.7
 - **Max Tokens**: 2000
