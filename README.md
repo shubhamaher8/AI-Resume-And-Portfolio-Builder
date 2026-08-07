@@ -81,7 +81,7 @@ AI-Resume-And-Portfolio-Builder/
 
 ## 🎯 Features
 
-- **AI-Powered Generation**: Uses AI (`"gpt-oss-120b`) to create professional documents.
+- **AI-Powered Generation**: Uses AI (`gpt-oss-120b`) to create professional documents.
 - **Three Document Types**:
   - Professional Resume
   - Compelling Cover Letter
@@ -118,7 +118,7 @@ AI-Resume-And-Portfolio-Builder/
 ### API Configuration
 
 The application uses the following Cerebras API settings:
-- **Model**: `"gpt-oss-120b`
+- **Model**: `gpt-oss-120b`
 - **Endpoint**: `https://api.cerebras.ai/v1/chat/completions`
 - **Temperature**: 0.7
 - **Max Tokens**: 2000
