@@ -21,7 +21,7 @@ except Exception:
     CEREBRAS_API_KEY = os.getenv("CEREBRAS_API_KEY")
 
 CEREBRAS_API_URL = "https://api.cerebras.ai/v1/chat/completions"
-MODEL_NAME = "llama-3.3-70b"
+MODEL_NAME = ""gpt-oss-120b"
 
 
 def generate_ai_content(prompt_text):
